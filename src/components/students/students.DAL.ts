@@ -1,4 +1,3 @@
-import { error } from "winston";
 import Student from "./students.model";
 
 /**
@@ -15,7 +14,7 @@ export async function createStudent(studentObj) {
 }
 
 /**
- * 
+ * list all students
  * @returns all studensts list 
  */
 export async function listStudents() {
@@ -28,7 +27,7 @@ export async function listStudents() {
 }
 
 /**
- * 
+ * find Student by Id
  * @param _id id of the student you want to find
  * @returns student object
  */

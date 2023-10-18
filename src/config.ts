@@ -1,6 +1,6 @@
 const Config = {
 	mongodb: {
-		url: process.env.MONGODB_URL || 'mongodb://127.0.0.1:27017/jump_start',
+		url: process.env.MONGODB_URL || 'mongodb://127.0.0.1:27017/College-Erp',
 	},
     server: {
 		port: process.env.PORT || 3000,

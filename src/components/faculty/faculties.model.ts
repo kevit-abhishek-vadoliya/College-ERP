@@ -4,18 +4,29 @@ const { Schema, model } = mongoose;
 
 const facultySchema = new Schema({
 	name: {
-		type: String,
+		type: Schema.Types.String,
 		required: true
 	},
     department:{
-        type: String,
+        ref: "Department",
+        type: Schema.Types.ObjectId,
         required: true
     },
     role:{
-        type: String,
+        type: Schema.Types.String,
         required: true
     },
+    email:{
+        type: Schema.Types.String,
+        required: true
+    },
+    password:{
+        type: Schema.Types.String,
+        required: true 
+    }
   
+},{
+    timestamps: true
 });
 
 const Faculty = model('Faculty', facultySchema)

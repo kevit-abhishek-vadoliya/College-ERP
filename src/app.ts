@@ -1,5 +1,6 @@
 import * as express from 'express';
 import * as mongoose from 'mongoose';
+import * as bodyParser from 'body-parser';
 
 import Config from './config';
 import { log } from './utils/winston-logger';
@@ -22,9 +23,10 @@ class App {
     }
 
     private config(): void {
+        this.app.use(bodyParser.json({extends:true,limit:'50mb'}));
+
         ApplicationConfig.registerRoute(this.app)
         this.app.use(express.static('public'));
-
 
         /**
         * Catch 404:not found routes

@@ -6,25 +6,35 @@ const { Schema, model } = mongoose;
  */
 const studentsSchema = new Schema({
 	name: {
-		type: String,
+		type: Schema.Types.String,
 		required: true
 	},
 	phone_number: {
-		type: Number,
+		type: Schema.Types.Number,
         required: true
 	},
     department:{
-        type: String,
+        ref: 'Department',
+        type: Schema.Types.ObjectId,
         required: true
     },
-    batch:{
-        type: Number,
+    batchYear:{
+        type: Schema.Types.Number,
         required: true
     },
     semester:{
-        type: Number,
+        type: Schema.Types.Number,
         required: true
+    },
+    email:{
+        type: Schema.Types.String,
+        required: true
+    },
+    password:{
+        type: Schema.Types.String
     }
+}, {
+    timestamps: true
 });
 
 const Student = model('Student', studentsSchema)

@@ -41,4 +41,13 @@ export async function findStudentById(_id) {
     
 }
 
+export async function findStudentByEmail(email) {
+    try{
+        return Student.findOne({email})
+    }
+    catch(err){
+        throw new Error(err)
+    }
+}
+
 

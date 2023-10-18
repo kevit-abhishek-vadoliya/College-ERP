@@ -43,3 +43,12 @@ export async function findFacultyById(_id) {
     }
     
 }
+
+export async function findFacultyByEmail(email) {
+    try{
+        return Faculty.findOne({email})
+    }
+    catch(err){
+        throw new Error(err)
+    }
+}

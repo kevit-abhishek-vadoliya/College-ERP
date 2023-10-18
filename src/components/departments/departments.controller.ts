@@ -1,5 +1,4 @@
 import { findDeptById, listDept, createDept } from "./departments.DAL";
-import { ObjectId } from 'mongodb'
 
 class DepartmentsController {
 
@@ -49,7 +48,7 @@ class DepartmentsController {
             const department = await findDeptById(_id)
 
             if (!department) {
-                res.status(404).send({ "success": false, "error": { "status code": 404, 'message': "department not found" } })
+                return res.status(404).send({ "success": false, "error": { "status code": 404, 'message': "department not found" } })
             }
 
             for (let field in req.body) {
@@ -74,7 +73,7 @@ class DepartmentsController {
             const id = req.params.id
             const department = await findDeptById(id)
             if (!department) {
-                res.status(404).send({ "success": false, "error": { "status code": 404, 'message': "Department not found" } })
+                return res.status(404).send({ "success": false, "error": { "status code": 404, 'message': "Department not found" } })
             }
             await department.deleteOne()
             res.status(200).send({ "success": true, "data": { "status code": 200, 'data': department } })

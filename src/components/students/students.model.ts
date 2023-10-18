@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import bcrypt = require('bcryptjs')
+import validator = require('validator');
 
 const { Schema, model } = mongoose;
 /**
@@ -29,15 +30,28 @@ const studentsSchema = new Schema({
     },
     email:{
         type: Schema.Types.String,
-        required: true
+        lowercase:true,
+        unique: true,
+        required: true,
+        validate(value) {
+            if (!validator.isEmail(value)) {
+               throw new Error("Enter valid Email")
+            }
+        }
     },
     password:{
+        type: Schema.Types.String,
+        required: true
+    },
+    authToken:{
         type: Schema.Types.String
     }
+
 }, {
     timestamps: true
 });
 
+//Hash the password before storing into DB
 studentsSchema.pre('save', async function (next) {
 	try {
 		if (this.isModified('password')) {

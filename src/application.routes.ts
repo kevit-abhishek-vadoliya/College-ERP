@@ -3,6 +3,7 @@ import IndexRoute from './index';
 import FacultyRoutes from './components/faculty/faculties.routes';
 import StudentsRoutes from './components/students/students.routes';
 import DepartmentsRoutes from './components/departments/departments.routes';
+import AttendanceRoutes from './components/attendance/attendance.routes';
 
 export default class ApplicationConfig {
 	public static registerRoute(app: Application) {
@@ -10,5 +11,6 @@ export default class ApplicationConfig {
 		app.use('/students', StudentsRoutes);
 		app.use('/faculties', FacultyRoutes);
 		app.use('/departments', DepartmentsRoutes);
+		app.use('/attendance', AttendanceRoutes)
 	}
 }

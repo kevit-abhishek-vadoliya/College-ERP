@@ -9,7 +9,6 @@
     "lint": "eslint src/**/*.ts",
     "lint-fix": "eslint --fix src/**/*.ts",
     "precommit": "npm run lint-fix && npm run format",
-    "prepush": "npm run lint",
     "start": "npm run build && node ./lib/app.js",
     "start:dev": "env-cmd -f .env nodemon -e ts --exec \"npm run start\"",
     "prepare": "husky install"
@@ -28,6 +27,8 @@
     "winston": "^3.11.0"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.8.0",
+    "@typescript-eslint/parser": "^6.8.0",
     "eslint": "^8.51.0",
     "eslint-config-prettier": "^9.0.0",
     "husky": "^8.0.3",

@@ -1,38 +1,66 @@
-import { Router } from 'express'
+import { Router } from 'express';
 import StudnetsController from './students.controller';
 import authentication from '../../utils/authentication';
 import authorization from '../../utils/authorization';
 
 class StudentRoute {
-    public router: Router;
+	public router: Router;
 
-    studentsController = new StudnetsController();
+	studentsController = new StudnetsController();
 
-    constructor(){
-        this.router = Router();
-        this.initializeRoutes();
-    }
+	constructor() {
+		this.router = Router();
+		this.initializeRoutes();
+	}
 
-    initializeRoutes(){
+	initializeRoutes() {
+		//addStudent
+		this.router.post(
+			'/add',
+			authentication,
+			authorization,
+			this.studentsController.createStudent,
+		);
 
-        //addStudent
-        this.router.post('/add', authentication, authorization, this.studentsController.createStudent);
+		//listAllStudents
+		this.router.get(
+			'/',
+			authentication,
+			authorization,
+			this.studentsController.listAllStudents,
+		);
 
-        //listAllStudents
-        this.router.get('/', authentication, authorization, this.studentsController.listAllStudents);
+		//view profile of current logged in student
+		this.router.get(
+			'/me',
+			authentication,
+			this.studentsController.viewStudentProfile,
+		);
 
-        //view profile of current logged in student
-        this.router.get('/me', authentication, this.studentsController.viewStudentProfile)
+		//update Student details
+		this.router.patch(
+			'/update/:id',
+			authentication,
+			this.studentsController.updateStudent,
+		);
 
-        //update Student details
-        this.router.patch('/update/:id', authentication, this.studentsController.updateStudent);
+		//delete Student
+		this.router.delete(
+			'/delete/:id',
+			authentication,
+			authorization,
+			this.studentsController.deleteStudent,
+		);
 
-        //delete Student 
-        this.router.delete('/delete/:id', authentication , authorization, this.studentsController.deleteStudent);
+		//login Student
+		this.router.post('/login', this.studentsController.loginStudent);
 
-        //login Student
-        this.router.post('/login', this.studentsController.loginStudent)
-    }
-    
+		//logout Student
+		this.router.post(
+			'/logout',
+			authentication,
+			this.studentsController.logoutStudent,
+		);
+	}
 }
 export default new StudentRoute().router;

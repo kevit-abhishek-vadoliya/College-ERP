@@ -7,8 +7,8 @@ import DepartmentsRoutes from './components/departments/departments.routes';
 export default class ApplicationConfig {
 	public static registerRoute(app: Application) {
 		app.use('/', IndexRoute);
-		app.use('/students', StudentsRoutes)
-		app.use('/faculties', FacultyRoutes)
-		app.use('/departments', DepartmentsRoutes)
+		app.use('/students', StudentsRoutes);
+		app.use('/faculties', FacultyRoutes);
+		app.use('/departments', DepartmentsRoutes);
 	}
 }

@@ -1,5 +1,4 @@
-import Faculty from "./faculties.model";
-
+import Faculty from './faculties.model';
 
 /**
  * add new faculty
@@ -7,12 +6,11 @@ import Faculty from "./faculties.model";
  * @returns created faculty
  */
 export async function createFaculty(facultyObj) {
-    try{
-        return await Faculty.create(facultyObj)
-    }
-    catch(err){
-        throw new Error(err)
-    }
+	try {
+		return await Faculty.create(facultyObj);
+	} catch (err) {
+		throw new Error(err);
+	}
 }
 
 /**
@@ -20,14 +18,12 @@ export async function createFaculty(facultyObj) {
  * @returns list of all faculties
  */
 export async function listFaculties() {
-    try{
-        return Faculty.find()
-    }
-    catch(err){
-        throw new Error(err)
-    }    
+	try {
+		return Faculty.find();
+	} catch (err) {
+		throw new Error(err);
+	}
 }
-
 
 /**
  * finds one faculty by id
@@ -35,20 +31,17 @@ export async function listFaculties() {
  * @returns faculty data
  */
 export async function findFacultyById(_id) {
-    try{
-        return Faculty.findById(_id)
-    }
-    catch(err){
-        throw new Error(err)
-    }
-    
+	try {
+		return Faculty.findById(_id);
+	} catch (err) {
+		throw new Error(err);
+	}
 }
 
 export async function findFacultyByEmail(email) {
-    try{
-        return Faculty.findOne({email})
-    }
-    catch(err){
-        throw new Error(err)
-    }
+	try {
+		return Faculty.findOne({ email });
+	} catch (err) {
+		throw new Error(err);
+	}
 }

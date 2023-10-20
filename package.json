@@ -11,7 +11,7 @@
     "precommit": "npm run lint-fix && npm run format",
     "start": "npm run build && node ./lib/app.js",
     "start:dev": "env-cmd -f .env nodemon -e ts --exec \"npm run start\"",
-    "prepare": "husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\""
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",

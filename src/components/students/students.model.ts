@@ -44,9 +44,9 @@ const studentsSchema = new Schema(
 			type: Schema.Types.String,
 			required: true,
 		},
-		attendance:{
+		attendance:[{
 			type: Schema.Types.Mixed
-		},
+		}],
 		authToken: {
 			type: Schema.Types.String,
 		},

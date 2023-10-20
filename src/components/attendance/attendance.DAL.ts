@@ -3,18 +3,16 @@ import { findStudentById } from '../../components/students/students.DAL';
 export async function addAttendance(attendanceObj) {
 	try {
 		attendanceObj.map(async (attendance) => {
-
 			const student = await findStudentById(attendance.studentId);
 
 			student.attendance.push({
 				date: attendance.date,
-				present: attendance.present
+				present: attendance.present,
 			});
-			await student.save()
+			await student.save();
 		});
 
-		return true
-
+		return true;
 	} catch (err) {
 		throw err;
 	}

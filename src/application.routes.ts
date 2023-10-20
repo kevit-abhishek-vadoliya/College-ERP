@@ -11,6 +11,6 @@ export default class ApplicationConfig {
 		app.use('/students', StudentsRoutes);
 		app.use('/faculties', FacultyRoutes);
 		app.use('/departments', DepartmentsRoutes);
-		app.use('/attendance', AttendanceRoutes)
+		app.use('/attendance', AttendanceRoutes);
 	}
 }

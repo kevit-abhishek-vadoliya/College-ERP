@@ -1,6 +1,5 @@
 import { addAttendance } from './attendance.DAL';
-import Student from '../../components/students/students.model';
-import { findStudentById } from '../../components/students/students.DAL';
+
 
 class attendanceController {
     async addAttendance(req, res) {

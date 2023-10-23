@@ -1,6 +1,11 @@
 import { addAttendance } from './attendance.DAL';
 
 class attendanceController {
+	/**
+	 * add attendance of the students
+	 * @param req express request
+	 * @param res express response
+	 */
 	async addAttendance(req, res) {
 		try {
 			const data = addAttendance(req.body);

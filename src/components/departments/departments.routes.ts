@@ -44,6 +44,22 @@ class DepartmentRoute {
 			authorization2,
 			this.departmentsController.deleteDepartment,
 		);
+
+		//get year wise students analysis(branch wise total students and total students in college)
+		this.router.get(
+			'/getAnalysis',
+			authentication,
+			authorization2,
+			this.departmentsController.getYearWiseAnalysys
+		)
+
+		//get vacant seats analysis
+		this.router.post(
+			'/getVacantSeats',
+			authentication,
+			authorization2,
+			this.departmentsController.getVacantSeats
+		)
 	}
 }
 export default new DepartmentRoute().router;

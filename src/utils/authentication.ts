@@ -2,6 +2,13 @@ import jwt = require('jsonwebtoken');
 import { findFacultyById } from '../components/faculty/faculties.DAL';
 import { findStudentById } from '../components/students/students.DAL';
 
+
+/**
+ * Middleware to verify token and User from DB
+ * @param {Request} req => Express Request
+ * @param {Response} res => Express Response
+ * @param {NextFunction} next => Express next function
+ */
 export default async (req, res, next) => {
 	try {
 		const token = req.header('Authorization').replace('Bearer ', '');

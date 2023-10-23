@@ -1,4 +1,4 @@
-import { findDeptById, listDept, createDept } from './departments.DAL';
+import { findDeptById, listDept, createDept, getYearWiseAnalysys, getVacantSeats } from './departments.DAL';
 
 class DepartmentsController {
 	/**
@@ -108,6 +108,53 @@ class DepartmentsController {
 				success: false,
 				error: { 'status code': 500, message: err },
 			});
+		}
+	}
+
+	/**
+	 * gets yearly analysis of total students 
+	 * @param req express request
+	 * @param res express response
+	 */
+	async getYearWiseAnalysys(req, res) {
+		try {
+			const analytics = await getYearWiseAnalysys()
+			res.status(200).send({
+				success: true,
+				data: { 'status code': 200, data: analytics },
+			})
+
+		}
+		catch (err) {
+			res.status(500).send({
+				success: false,
+				error: { 'status code': 500, message: err },
+			})
+		}
+	}
+
+	/**
+	 * gets yearly analysis of vacant seats 
+	 * @param req express request
+	 * @param res express response
+	 */
+	async getVacantSeats(req, res) {
+		try {
+			const batchYear = req.body.batchYear
+			const branch = req.body.branch
+			const analytics = await getVacantSeats(batchYear, branch)
+
+			res.status(200).send({
+				success: true,
+				data: { 'status code': 200, data: analytics },
+			})
+		}
+		catch (err) {
+			res.status(500).send({
+				success: false,
+				error: { 'status code': 500, message: err },
+			})
+
 		}
 	}
 }

@@ -4,7 +4,7 @@ import {
 	createStudent,
 	findStudentByEmail,
 	listAbsentStudents,
-	listLessAttendanceStudents
+	listLessAttendanceStudents,
 } from './students.DAL';
 import bcrypt = require('bcryptjs');
 import jwt = require('jsonwebtoken');
@@ -223,27 +223,34 @@ class StudnetsController {
 	 * @param res express response
 	 * @returns array of all absent students on a date
 	 */
-	async listAbsentStudents(req, res){
-		try{
-			const date = req.body.date 
-			const batchYear = req.body.batchYear
-			const department = req.body.department
-			const semester = req.body.semester
-			
-			if(!date){
+	async listAbsentStudents(req, res) {
+		try {
+			const date = req.body.date;
+			const batchYear = req.body.batchYear;
+			const department = req.body.department;
+			const semester = req.body.semester;
+
+			if (!date) {
 				return res.status(400).send({
 					success: false,
-					error: { 'status code': 400, message: "Please provide date" },
-				}) 
+					error: {
+						'status code': 400,
+						message: 'Please provide date',
+					},
+				});
 			}
-			const students = await listAbsentStudents(date, batchYear, department, semester)
+			const students = await listAbsentStudents(
+				date,
+				batchYear,
+				department,
+				semester,
+			);
 
 			res.status(200).send({
 				success: true,
 				data: { 'status code': 200, data: students },
-			})
-		}
-		catch(err){
+			});
+		} catch (err) {
 			res.status(500).send({
 				success: false,
 				error: { 'status code': 500, message: err },
@@ -256,23 +263,26 @@ class StudnetsController {
 	 * @param req express request
 	 * @param res express reponse
 	 */
-	async listLessAttendanceStudents(req, res){
-		try{
-			const batchYear = req.body.batchYear
-			const department = req.body.department
-			const semester = req.body.semester
+	async listLessAttendanceStudents(req, res) {
+		try {
+			const batchYear = req.body.batchYear;
+			const department = req.body.department;
+			const semester = req.body.semester;
 
-			const students = await listLessAttendanceStudents(batchYear, department, semester)
+			const students = await listLessAttendanceStudents(
+				batchYear,
+				department,
+				semester,
+			);
 			res.status(200).send({
 				success: true,
 				data: { 'status code': 200, data: students },
-			})
-		}
-		catch(err){
+			});
+		} catch (err) {
 			res.status(500).send({
 				success: false,
 				error: { 'status code': 500, message: err },
-			})
+			});
 		}
 	}
 }

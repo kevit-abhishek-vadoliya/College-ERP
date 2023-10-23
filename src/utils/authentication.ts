@@ -2,7 +2,6 @@ import jwt = require('jsonwebtoken');
 import { findFacultyById } from '../components/faculty/faculties.DAL';
 import { findStudentById } from '../components/students/students.DAL';
 
-
 /**
  * Middleware to verify token and User from DB
  * @param {Request} req => Express Request

@@ -1,8 +1,7 @@
 import { findStudentById } from '../../components/students/students.DAL';
 
-
 /**
- * 
+ *
  * @param attendanceObj input object of attendance
  * @returns boolean true
  */

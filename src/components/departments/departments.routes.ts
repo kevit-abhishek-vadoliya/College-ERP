@@ -50,16 +50,16 @@ class DepartmentRoute {
 			'/getAnalysis',
 			authentication,
 			authorization2,
-			this.departmentsController.getYearWiseAnalysys
-		)
+			this.departmentsController.getYearWiseAnalysys,
+		);
 
 		//get vacant seats analysis
 		this.router.post(
 			'/getVacantSeats',
 			authentication,
 			authorization2,
-			this.departmentsController.getVacantSeats
-		)
+			this.departmentsController.getVacantSeats,
+		);
 	}
 }
 export default new DepartmentRoute().router;

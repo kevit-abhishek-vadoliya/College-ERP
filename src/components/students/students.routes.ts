@@ -67,16 +67,16 @@ class StudentRoute {
 			'/absentStudents',
 			authentication,
 			authorization,
-			this.studentsController.listAbsentStudents
-		)
+			this.studentsController.listAbsentStudents,
+		);
 
 		//list less attendance students
 		this.router.post(
 			'/lessAttendanceStudents',
 			authentication,
 			authorization,
-			this.studentsController.listLessAttendanceStudents
-		)
+			this.studentsController.listLessAttendanceStudents,
+		);
 	}
 }
 export default new StudentRoute().router;

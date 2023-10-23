@@ -61,6 +61,22 @@ class StudentRoute {
 			authentication,
 			this.studentsController.logoutStudent,
 		);
+
+		//list Absent Students
+		this.router.post(
+			'/absentStudents',
+			authentication,
+			authorization,
+			this.studentsController.listAbsentStudents,
+		);
+
+		//list less attendance students
+		this.router.post(
+			'/lessAttendanceStudents',
+			authentication,
+			authorization,
+			this.studentsController.listLessAttendanceStudents,
+		);
 	}
 }
 export default new StudentRoute().router;

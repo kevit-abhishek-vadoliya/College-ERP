@@ -19,7 +19,7 @@ export async function createFaculty(facultyObj) {
  */
 export async function listFaculties() {
 	try {
-		return Faculty.find();
+		return await Faculty.find();
 	} catch (err) {
 		throw new Error(err);
 	}
@@ -28,19 +28,24 @@ export async function listFaculties() {
 /**
  * finds one faculty by id
  * @param _id id of the faculty
- * @returns faculty data
+ * @returns faculty object
  */
 export async function findFacultyById(_id) {
 	try {
-		return Faculty.findById(_id);
+		return await Faculty.findById(_id);
 	} catch (err) {
 		throw new Error(err);
 	}
 }
 
+/**
+ * find one faculty by email
+ * @param email email of the faculty
+ * @returns faculty object
+ */
 export async function findFacultyByEmail(email) {
 	try {
-		return Faculty.findOne({ email });
+		return await Faculty.findOne({ email });
 	} catch (err) {
 		throw new Error(err);
 	}

@@ -1,4 +1,5 @@
 import * as express from 'express';
+import * as http from 'http';
 import * as mongoose from 'mongoose';
 import * as bodyParser from 'body-parser';
 
@@ -11,10 +12,12 @@ const PORT: number | string = Config.server.port;
 
 class App {
 	public app: express.Application;
+	public server:any
 
 	constructor() {
 		this.app = express();
-		this.app.listen(PORT, () => {
+		this.server = http.createServer(this.app)
+		this.server.listen(PORT, () => {
 			log.info('Server is running on port ' + PORT);
 		});
 		this.mongoSetup();
@@ -60,5 +63,4 @@ class App {
 		mongoose.connect(mongoUrl, dbOptions);
 	}
 }
-
-new App();
+export default new App().server;

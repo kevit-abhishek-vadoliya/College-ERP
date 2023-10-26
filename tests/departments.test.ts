@@ -43,8 +43,8 @@ describe("addDepartment",()=>{
         .set('Authorization', `Bearer ${dbObj.facultytwo.authToken}`)
         .send({
             "department": "Computer Engineering",
-            "initial": "CE",
-            "totalStudentsIntake": 120
+            "initial": "CIV",
+            "totalStudentsIntake": 60
         })
         .expect(201)
     })

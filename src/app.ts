@@ -12,11 +12,11 @@ const PORT: number | string = Config.server.port;
 
 class App {
 	public app: express.Application;
-	public server:any
+	public server: any;
 
 	constructor() {
 		this.app = express();
-		this.server = http.createServer(this.app)
+		this.server = http.createServer(this.app);
 		this.server.listen(PORT, () => {
 			log.info('Server is running on port ' + PORT);
 		});

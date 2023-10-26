@@ -15,7 +15,6 @@ class DepartmentsController {
 	async createDepartment(req, res) {
 		try {
 			const departmentObj = req.body;
-			console.log(req.body);
 
 			const department = await createDept(departmentObj);
 			res.status(201).send({
